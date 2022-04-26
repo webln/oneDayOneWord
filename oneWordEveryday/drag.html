@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>一日一字</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+		<meta name="theme-color" content="#fff">
+		<link rel="shortcut icon" href="images/cloudicon.ico"/>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/jquery-ui.min.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">		
+	</head>
+	<body>
+		<div id="oneWordMain">
+			<div class="container">
+				<!-- 填空 start -->
+				<div id="dragBox">
+					<div id="question">
+						<div class="row">
+							<div class="col-6" v-for="(item, index) in [1,2,3,4,5,6]">
+								<div class="q-single">
+									<div class="q-inside q-left" v-bind="{ 'data-question': item }">
+										<!-- <div class="a-top">{{item}}风</div>
+										<div class="a-bottom">{{index+1}} feng</div> -->
+									</div>
+									<div class="q-inside q-center">衣</div>
+									<div class="q-inside q-right">underwear</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="answer" >
+						<div class="row">
+							<div class="col-md-2 col-xs-4" v-for="(item, index) in [1,2,3,4,5,6]">
+								<div class="a-single"  v-bind="{ 'data-answer': item }">
+									<div class="a-top">{{item}}风</div>
+									<div class="a-bottom">{{index+1}} feng</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 填空 end -->
+			</div>
+		</div>
+		
+		
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
+		<script src="js/jquery.ui.touch-punch.min.js"></script>
+		<script src="js/hanzi-writer.min.js"></script>1
+		<script src="js/vue.js"></script>
+		
+		<script>		
+			$(function(){				
+			var oneWordMain = new Vue({
+					el: '#oneWordMain',
+					data: {						
+						
+					},
+					methods: {
+						// 拖拽
+						dragFun: function () {
+						  $( "div.a-single" ).draggable({
+						    revert: false,
+							containment: 'div#dragBox',//元素 字符串 数组
+							cursor:'move',
+							start: function(event, ui) {
+							    ui.helper.data('rejected', true);
+							    ui.helper.data('original-position', ui.helper.offset());
+							},
+						    stop: function( el, ui ) {
+								if (ui.helper.data('rejected') === true) {
+									ui.helper.offset(ui.helper.data('original-position'));
+								}
+						    }
+						  });
+						},
+						// 放置
+						dropFun: function () {
+						  $( "div.q-left" ).droppable({
+						    accept:'div.a-single',	
+							containment:'div.a-single',
+							tolerance: 'pointer',							
+							// fit: draggable 完全重叠到droppable
+							// intersect: draggable 和droppable至少重叠50%
+							// pointer: 鼠标重叠到droppable
+							// touch: draggable和droppable的任意重叠					
+							
+						    drop: function( el, ui ) {
+								if(ui.draggable[0].attributes['data-answer'].value !== el.target.getAttribute("data-question")){
+									ui.draggable.data('rejected', true);
+								}else{
+									ui.draggable.data('rejected', false);
+								}
+						    }
+						  });
+						},
+					},
+					beforeCreate: function () {
+						///console.group('beforeCreate 创建前状态===============》');
+					},
+					created: function () {
+						//console.group('created 创建完毕状态===============》');
+					},
+					beforeMount: function () {
+						//console.group('beforeMount 挂载前状态===============》');
+					},
+					mounted: function (){						
+						//console.group('mounted 挂载结束状态===============》');
+					},					
+					beforeUpdate: function () {
+						// this.characterInit();
+						//console.group('beforeUpdate 更新前状态===============》');
+					},
+					updated: function () {
+						//console.group('updated 更新完成状态===============》');
+					},
+					beforeDestroy: function () {
+						//console.group('beforeDestroy 销毁前状态===============》');
+					},
+					destroyed: function () {
+						//console.group('destroyed 销毁完成状态===============》');
+					}	
+				});
+				oneWordMain.dragFun();	
+				oneWordMain.dropFun();	
+					
+				
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>一日一字</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+		<meta name="theme-color" content="#fff">
+		<link rel="shortcut icon" href="images/cloudicon.ico"/>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/jquery-ui.min.css" rel="stylesheet">
+		<link href="css/swiper-bundle.min.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="oneWordMain">
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="container">
+							<!-- listBox start -->
+							<div class="listBox">
+								<div class="row projectinfolist">
+								   
+								   <div class="col-md-4 col-6" v-for="(item, index) in projectinfo">
+									   <div class="con_left_img">
+										   <div class="imgposition">
+											   <!-- <img v-bind:src="item.img" alt="" > -->
+												<div class="con_left_shadow"></div>
+												<div class="con_left_shadow_con">
+													<img src="/resource/gkfxl/images/watch.png" alt="">
+													<!-- <a href="javascript:void(0);">查看详情</a> -->
+													<a v-bind:href="item.url" target="_blank">查看详情</a>
+												</div>
+										   </div>
+										   <p>{{item.title}}</p>
+										</div>
+								   </div>
+							   </div>
+							</div>
+							<!-- listBox end -->	
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="container">
+							<!-- 日期 start -->
+							<div id="dateBox">
+								<div  id="dateInput"></div>
+							</div>
+							<!-- 日期 end -->	
+						</div>
+					</div>
+					<!-- <div class="swiper-slide">
+						<div class="container">
+							
+						</div>
+					</div> -->
+					<div class="swiper-slide">
+						<div class="container">
+							<!-- 汉字  start -->
+							<div id="hanzi"  style="text-align: center;">
+								<div>
+									<span class="" v-for="(item, index) in newCharacter">
+									   <button id="date-button" v-on:click="newCharacterQuiz">{{item}}</button>
+									</span>
+								</div>
+								<!-- 田字格汉字书写 -->
+								<div id="" class="row">
+									<div id="" class="col-md-6 col-xs-12">
+										<svg xmlns="http://www.w3.org/2000/svg" id="character-target-div">
+										  <line x1="0" y1="0" x2="200" y2="200" stroke="#DDD" />
+										  <line x1="200" y1="0" x2="0" y2="200" stroke="#DDD" />
+										  <line x1="100" y1="0" x2="100" y2="200" stroke="#DDD" />
+										  <line x1="0" y1="100" x2="200" y2="100" stroke="#DDD" />
+										</svg>
+									</div>
+									<div id="" class="col-md-6 col-xs-12">
+										<svg xmlns="http://www.w3.org/2000/svg" id="character-target-div-test">
+										  <line x1="0" y1="0" x2="200" y2="200" stroke="#DDD" />
+										  <line x1="200" y1="0" x2="0" y2="200" stroke="#DDD" />
+										  <line x1="100" y1="0" x2="100" y2="200" stroke="#DDD" />
+										  <line x1="0" y1="100" x2="200" y2="100" stroke="#DDD" />
+										</svg>
+									</div>
+								</div>
+								<button id="reset-button" v-on:click="writerTestQuiz">重置</button>
+							</div>
+							<!-- 汉字 end -->
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="container">
+							<!-- 填空 start -->
+							<div id="dragBox">
+								<div id="question">
+									<div class="row">
+										<div class="col-6" v-for="(item, index) in [1,2,3,4,5,6]">
+											<div class="q-single">
+												<div class="q-inside q-left" v-bind="{ 'data-question': item }">
+													<!-- <div class="a-top">{{item}}风</div>
+													<div class="a-bottom">{{index+1}} feng</div> -->
+												</div>
+												<div class="q-inside q-center">衣</div>
+												<div class="q-inside q-right">underwear</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="answer" >
+									<div class="row">
+										<div class="col-md-2 col-sm-4  col-4" v-for="(item, index) in [1,2,3,4,5,6]">
+											<div class="a-single"  v-bind="{ 'data-answer': item }">
+												<div class="a-top">{{item}}风</div>
+												<div class="a-bottom">{{index+1}} feng</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 填空 end -->
+						</div>
+					</div>
+				</div>
+				<div class="swiper-button-next"></div>
+			    <div class="swiper-button-prev"></div>
+			    <!-- <div class="swiper-pagination"></div> -->
+			</div>
+			<div class="container">
+				
+				
+
+				
+				
+				
+				
+			</div>
+		</div>
+		
+		
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
+		<script src="js/jquery.ui.touch-punch.min.js"></script>
+		<script src="js/hanzi-writer.min.js"></script>
+		<script src="js/swiper-bundle.min.js"></script>
+		<script src="js/vue.js"></script>
+		
+		<script>
+		
+			$(function(){				
+			var oneWordMain = new Vue({
+					el: '#oneWordMain',
+					data: {
+						newCharacter:['我','们','衣','服','一','日','字'],
+						writer: {},
+						writerTest: {},						
+						projectinfo:[
+								{'title':'国家级专业技术人员继续教育','url':'/resource/gkfxl/projectinfo/jxjy.html'},
+								{'title':'中国社区教育网','url':'http://www.shequ.edu.cn/'},
+								{'title':'教师培训学院','url':'/resource/gkfxl/projectinfo/schooljs.html'},
+								{'title':'全国基层党员继续教育项目','url':'/resource/gkfxl/projectinfo/jcdy.html'},
+								{'title':'社会艺术教育培训考试项目','url':'/resource/gkfxl/projectinfo/shys.html'},
+								{'title':'农村电子商务人才培养项目','url':'/resource/gkfxl/projectinfo/ncds.html'},
+								{'title':'精彩女性终身学习计划','url':'http://www.womenxiangxue8.com/'},
+								{'title':'家庭健康等岗位技能与学历','url':'/resource/gkfxl/projectinfo/jtjk.html'},
+								{'title':'富士康与北汽福田','url':'/resource/gkfxl/projectinfo/fskbq.html'},
+								{'title':'研学导师岗位技能培训项目','url':'/resource/gkfxl/projectinfo/yxds.html'},
+						]
+					},
+					methods: {
+						// swiper
+						swiperFun: function(){
+							var swiper = new Swiper(".mySwiper", {
+							        autoHeight: true,
+							        spaceBetween: 20,
+							        navigation: {
+							          nextEl: ".swiper-button-next",
+							          prevEl: ".swiper-button-prev",
+							        },
+							        pagination: {
+							          el: ".swiper-pagination",
+							          clickable: true,
+							        },
+							      });
+						},
+						// 日期
+						dateFun: function(){
+							
+							$( "#dateInput" ).datepicker({
+								dateFormat:"yy/mm/dd",
+								showMonthAfterYear:true,//设置在月份在年份后边
+								yearSuffix: '年',//年份的后缀
+								firstDay:1,//设置一周从星期一开始
+								closeText: '关闭',//给关闭按钮设置文字
+								// currentText: '今天',//给今天按钮设置文字
+								// showButtonPanel:true,//是否在日期面板中显示按钮
+								changeMonth:true,//设置月份的下拉列表
+								changeYear:true,//设置年的下拉列表
+								// yearRange:"2000:2050",//设置下拉列表中年份的范围
+								
+								prevText: "上一天",//上一天文字
+								nextText: "下一天",//下一天文字
+								numberOfMonths: [ 1, 1 ],//一行一个
+								selectOtherMonths: true,//
+								// minDate:'-1m -7d',//从今天起 一个月零七天 maxDate
+								monthNames: [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
+								// 月份名称
+								// 值：包含12个月份的数组（主要用于本土化）
+								// 默认： [ "Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December" ]
+								dayNamesMin: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
+								// 列标题
+								// 值：包含周日到周六的数组（主要用于本土化）
+								// 默认：[ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ]
+								beforeShow: function(){
+									// 日期面板显示之前的处理函数（处理业务中面板显示与否相关的逻辑）
+									// 默认：null
+									// 功能：获取输入字段和当前datepicker实例并返回选项对象以更新datepicker的函数。它在显示datepicker之前调用。
+									alert("123");
+									console.log("获取输入字段和当前datepicker实例并返回选项对象以更新datepicker的函数。它在显示datepicker之前调用。");
+								},
+								onSelect: function (dateText, inst) {
+									console.log(dateText);
+									console.log(inst);
+																		
+								}
+								// beforeShowDay: function(date) {
+							
+								// }
+								
+							});
+							console.log($( "#dateInput" ).datepicker( 'getDate' ));
+							
+						},
+						allReqfun:function(){
+							
+							
+						},
+						getReqFun: function(url){
+							axios.get('/user',{
+							  params:{
+							    ID:12345
+							  }
+							})
+							.then(function(response){
+							  console.log(response);
+							})
+							.catch(function(err){
+							  console.log(err);
+							});
+						},
+						postReqFun:function(){
+							axios.post('/user',{
+							  firstName:'Fred',
+							  lastName:'Flintstone'
+							})
+							.then(function(res){
+							  console.log(res);
+							})
+							.catch(function(err){
+							  console.log(err);
+							});
+						},						
+						// 测试
+						writerTestQuiz: function () {
+						  writerTest.quiz();
+						},
+						newCharacterQuiz: function (event) {
+						  // 新汉字
+						  console.log(this.name);
+						  console.log(event.target.innerText);
+						  writer.setCharacter(event.target.innerText);
+						  writerTest.setCharacter(event.target.innerText);
+						  //循环动画
+						  writer.loopCharacterAnimation();
+						  // 测试
+						  writerTest.quiz();
+						},
+						characterInit: function (){
+							writer = HanziWriter.create('character-target-div','们', {
+							  width: 200,
+							  height: 200,
+							  padding: 5,
+							  strokeColor: '#000000',// 字体颜色
+							  radicalColor: '#168F16', // green 偏旁部首颜色
+							  delayBetweenLoops: 1000//动画间隔时间
+							});
+							// 动画
+							// document.getElementById('animate-button').addEventListener('click', function() {
+							//   writer.animateCharacter();
+							// });
+							
+							
+							writerTest = HanziWriter.create('character-target-div-test','们', {
+							  width: 200,
+							  height: 200,
+							  padding: 5,
+							  strokeColor: '#000000',// 字体颜色
+							  radicalColor: '#168F16', // green 偏旁部首颜色
+							  delayBetweenLoops: 1000//动画间隔时间
+							});
+							
+							//循环动画
+							writer.loopCharacterAnimation();
+							// 测试
+							writerTest.quiz();
+						},
+						
+						// 拖拽
+						dragFun: function () {
+						  $( "div.a-single" ).draggable({
+						    revert: false,
+							containment: 'div#dragBox',//元素 字符串 数组
+							cursor:'move',
+							start: function(event, ui) {
+							    ui.helper.data('rejected', true);
+							    ui.helper.data('original-position', ui.helper.offset());
+							},
+						    stop: function( el, ui ) {
+								if (ui.helper.data('rejected') === true) {
+									ui.helper.offset(ui.helper.data('original-position'));
+								}
+						    }
+						  });
+						},
+						// 放置
+						dropFun: function () {
+						  $( "div.q-left" ).droppable({
+						    accept:'div.a-single',	
+							containment:'div.a-single',
+							tolerance: 'pointer',							
+							// fit: draggable 完全重叠到droppable
+							// intersect: draggable 和droppable至少重叠50%
+							// pointer: 鼠标重叠到droppable
+							// touch: draggable和droppable的任意重叠					
+							
+						    drop: function( el, ui ) {
+								if(ui.draggable[0].attributes['data-answer'].value !== el.target.getAttribute("data-question")){
+									ui.draggable.data('rejected', true);
+								}else{
+									ui.draggable.data('rejected', false);
+								}
+						    }
+						  });
+						}
+					},
+					beforeCreate: function () {
+						///console.group('beforeCreate 创建前状态===============》');
+					},
+					created: function () {
+						//console.group('created 创建完毕状态===============》');
+					},
+					beforeMount: function () {
+						//console.group('beforeMount 挂载前状态===============》');
+					},
+					mounted: function (){						
+						//console.group('mounted 挂载结束状态===============》');
+					},					
+					beforeUpdate: function () {
+						// this.characterInit();
+						//console.group('beforeUpdate 更新前状态===============》');
+					},
+					updated: function () {
+						//console.group('updated 更新完成状态===============》');
+					},
+					beforeDestroy: function () {
+						//console.group('beforeDestroy 销毁前状态===============》');
+					},
+					destroyed: function () {
+						//console.group('destroyed 销毁完成状态===============》');
+					}	
+				});
+				oneWordMain.swiperFun();//页面切换
+				oneWordMain.dateFun();//日期 
+				oneWordMain.characterInit();//汉字初始化
+				oneWordMain.dragFun();//拖
+				oneWordMain.dropFun();//放
+					
+				
+			});
+		</script>
+	</body>
+</html>

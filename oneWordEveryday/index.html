@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>一日一字</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+		<meta name="theme-color" content="#fff">
+		<link rel="shortcut icon" href="images/cloudicon.ico"/>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/jquery-ui.min.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/global.css" rel="stylesheet">
+		<link href="css/loading.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="oneWordMain">
+			<div id="bg">
+				<div :class='"bg"+(index+1)' v-for="(item, index) in [1,2,3,4,5,6,7,8]">
+					<div class="btnHome" v-on:click="backHome" v-if="item==2">HOME</div>
+				</div>				
+			</div>
+			<div class="result">
+			    <audio id="correct" src="resource/audio/right.mp3"></audio>
+			    <audio id="error" src="resource/audio/wrong.mp3"></audio>
+			</div>
+			<div class="pageBox">
+				<div class="pageTab-wrapper">
+					<div class="pageSingle" data-name='0'>
+						<div class="container">
+							<h2 class="pageTitle">&nbsp;</h2>
+							<!-- <p class="txt3Size">&nbsp;</p> -->
+							<!-- 日期 start -->
+							<div id="" class="row">
+								<div id="" class="col-md-7 col-xs-12">
+									<div id="dateBox">
+										<div  id="dateInput"></div>
+									</div>
+								</div>
+								<div id="" class="col-md-5 col-xs-12 lookCenter" >
+									<h2 class="pinyin pageTitle">{{newPyCharacter}}</h2>
+									<svg xmlns="http://www.w3.org/2000/svg" id="character-init-div">
+									  <line x1="0" y1="0" x2="200" y2="200" stroke="#9d928b" />
+									  <line x1="200" y1="0" x2="0" y2="200" stroke="#9d928b" />
+									  <line x1="100" y1="0" x2="100" y2="200" stroke="#9d928b" />
+									  <line x1="0" y1="100" x2="200" y2="100" stroke="#9d928b" />
+									</svg>
+								</div>
+							</div>
+							
+							
+							<!-- 日期 end -->
+						</div>
+					</div>
+					<div class="pageSingle" data-name='1'>
+						<div class="container">
+							<!-- listBox start -->
+							<div class="listBox">
+								<div class="row">								   
+								   <div class="col-md-12 col-12">
+									   <h2 class="pageTitle">Character Activity</h2>
+									   <p class="txt3Size">{{selectQuestions.question}}</p>
+								   </div>								   
+							   </div>
+							   <div id="" class="row">
+									<div id="" class="col-md-6 col-xs-12 lookCenter">
+										<h2 class="pinyin pageTitle">{{newPyCharacter}}</h2>
+										<svg xmlns="http://www.w3.org/2000/svg" id="character-initSelect-div">
+										  <line x1="0" y1="0" x2="200" y2="200" stroke="#9d928b" />
+										  <line x1="200" y1="0" x2="0" y2="200" stroke="#9d928b" />
+										  <line x1="100" y1="0" x2="100" y2="200" stroke="#9d928b" />
+										  <line x1="0" y1="100" x2="200" y2="100" stroke="#9d928b" />
+										</svg>
+									</div>
+									<div id="selectBox" class="col-md-6 col-xs-12" >
+										<div class="judgeBox"><img id="correct" src="images/xiaolian_right.png" ><img id="error" src="images/xiaolian_wrong.png" ></div>
+										<div class="selectItem" v-for="(item, index) in selectQuestions.option" >
+											<label>
+												<span></span>
+												<input style="display: none;" name="optionSelect" type="radio" :value="item.name" v-bind="{ 'data-answer': selectQuestions.answer}" v-on:click="selectFun"/> 
+												<b class="selectContent">{{item.value}}</b>
+											 </label>
+										</div>
+									</div>
+							   </div>
+							</div>
+							<!-- listBox end -->	
+						</div>
+					</div>
+					<div class="pageSingle" data-name='2'>
+						<div class="container">
+							<div class="row">
+							   <div class="col-md-12 col-12">
+								   <h2 class="pageTitle">Culture of the character</h2>
+								   <p class="txt3Size">{{read.contentTxt}}</p>
+							   </div>	
+							   <div class="col-md-12 col-12 imgReadBox">
+								   <div class="imgItem" v-for="(item, index) in read.readImages">
+									   <div><img :src="item" alt=""></div>
+									   <!-- <div><img src="images/arrownext.png" alt=""></div> -->
+								   </div>
+							   </div>
+							</div>
+						</div>
+					</div>
+					<div class="pageSingle" data-name='3'>
+						<div class="container">
+							<div class="row">
+							   <div class="col-md-12 col-12">
+								   <h2 class="pageTitle">Culture Writing</h2>
+								   <p class="txt3Size">
+									   Follow these stroke orders,click on the pen to practice writing the word in the empty square,and print out your own Chinese flash cards.
+								   </p>
+							   </div>
+							   <div class="col-md-12 col-12">
+								   <!-- 汉字  start -->
+								   <div id="hanzi"  style="text-align: center;">
+								   	<div>
+								   		<span class="" v-for="(item, index) in newCharacter">
+								   		   <button id="date-button" v-on:click="newCharacterQuiz">{{item}}</button>
+								   		</span>
+								   	</div>
+								   	<!-- 田字格汉字书写 -->
+								   	<div id="" class="row">
+								   		<div id="characterTarget" class="col-md-6 col-xs-12">
+								   			<svg xmlns="http://www.w3.org/2000/svg" id="character-target-div">
+								   			  <line x1="0" y1="0" x2="200" y2="200" stroke="#9d928b" />
+								   			  <line x1="200" y1="0" x2="0" y2="200" stroke="#9d928b" />
+								   			  <line x1="100" y1="0" x2="100" y2="200" stroke="#9d928b" />
+								   			  <line x1="0" y1="100" x2="200" y2="100" stroke="#9d928b" />
+								   			</svg>
+								   			<br>
+								   			<!-- <img class="reset-button" v-on:click="writerTestQuiz" src="images/reset.png"> -->
+								   		</div>
+								   		<div id="characterTargetTest" class="col-md-6 col-xs-12">
+								   			<svg xmlns="http://www.w3.org/2000/svg" id="character-target-div-test">
+								   			  <line x1="0" y1="0" x2="200" y2="200" stroke="#9d928b" />
+								   			  <line x1="200" y1="0" x2="0" y2="200" stroke="#9d928b" />
+								   			  <line x1="100" y1="0" x2="100" y2="200" stroke="#9d928b" />
+								   			  <line x1="0" y1="100" x2="200" y2="100" stroke="#9d928b" />
+								   			</svg>
+								   			<br>
+								   			<img class="reset-button" v-on:click="writerTestQuiz" src="images/reset.png">
+								   		</div>
+								   	</div>
+								   	
+								   </div>
+								   <!-- 汉字 end -->
+							   </div>
+						   </div>
+							
+						</div>
+					</div>
+					<div class="pageSingle" data-name='4'>
+						<div class="container">
+							<div class="row">
+							   <div class="col-md-12 col-12">
+								   <h2 class="pageTitle">Character Game</h2>
+								   <p class="txt3Size">
+									   Please drag the proper character to match a word.
+								   </p>
+								   <!--点击填空 start -->
+								   <div id="fillBlanks">
+									   <div id="problem">
+											<div :class="'everdayVocabulary numbner'+index" v-for="(item, index) in words" >
+												<div class="vocabularytxt" v-for="(single, index) in item.vocabulary">
+													<div class="singleBlank" v-if="single == '*'">&nbsp;</div>
+													<div class="single" v-else>{{single}}</div>			
+												</div>
+												<div class="vocabularyEnglish">{{item.english}}</div>
+												<div class="vocabularyAudio" v-on:click="playFun">
+													<audio :src="item.audioSrc"></audio>
+												</div>
+											</div>					   
+									   </div>
+									   <div id="solution">
+											<div class="everdaycharacter" v-for="(item, index) in words" v-bind:style="{'z-index': (6 - index) ,'left':(index*1)+'rem'}">
+												<div class="characterBox" >
+													<svg xmlns="http://www.w3.org/2000/svg">
+													  <line x1="0" y1="0" x2="6.25rem" y2="6.25rem" stroke="#9d928b" />
+													  <line x1="6.25rem" y1="0" x2="0" y2="6.25rem" stroke="#9d928b" />
+													  <line x1="3.125rem" y1="0" x2="3.125rem" y2="6.25rem" stroke="#9d928b" />
+													  <line x1="0" y1="3.125rem" x2="6.25rem" y2="3.125rem" stroke="#9d928b" />
+													</svg>	
+													<div class="characterTxt" v-on:click="fillClickFun" v-bind="{ 'data-number': index }" > 
+														{{newCharacter[0]}}
+														<audio :src="item.audioSrc"></audio>
+													</div>
+												</div>	
+											</div>	
+									   </div>
+								   </div>
+								   <!-- 点击填空 end -->
+							   </div>	
+						   </div>
+						  
+							<!-- 填空 start -->
+							<!-- <div id="dragBox">
+								<div id="question">
+									<div class="row">
+										<div class="col-6" v-for="(item, index) in [1,2,3,4,5,6]">
+											<div class="q-single">
+												<div class="q-inside q-left" v-bind="{ 'data-question': item }">
+													
+												</div>
+												<div class="q-inside q-center">衣</div>
+												<div class="q-inside q-right">underwear</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="answer" >
+									<div class="row">
+										<div class="col-md-2 col-sm-4  col-4" v-for="(item, index) in [1,2,3,4,5,6]">
+											<div class="a-single"  v-bind="{ 'data-answer': item }">
+												<div class="a-top">{{item}}风</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+							<!-- 填空 end -->
+						</div>
+					</div>
+				</div>
+				<div class="button-next" v-on:click="nextFun"></div>
+			    <div class="button-prev" v-on:click="prevFun"></div>
+			    <!-- <div class="swiper-pagination"></div> -->
+			</div>
+		</div>
+		
+		
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
+		<script src="js/jquery.ui.touch-punch.min.js"></script>
+		<script src="js/loading.js"></script>
+		<script src="js/hanzi-writer.min.js"></script>
+		<script src="js/pinyin_dict_withtone.js"></script>
+		<script src="js/pinyinUtil.js"></script>
+		<script src="js/vue.js"></script>
+		
+		<script>
+		
+			$(function(){				
+			var oneWordMain = new Vue({
+					el: '#oneWordMain',
+					data: {
+						newCharacter:['年','我','们','衣','服','一','日','字'],
+						newPyCharacter:'er',
+						writer: {},
+						writerTest: {},	
+						initwriter:{},
+						initSelectwriter:{},
+						selectQuestions:{'question':'Guess the meaning of the character on the left,thinking of what the picture of the character reminds you of.','answer':'D','option':[{'name':'A','value':'Day'},{'name':'B','value':'Month'},{'name':'C','value':'Field'},{'name':'D','value':'Year'}]},
+						read:{
+							'contentTxt':'The ancient form of the character “年” resembled a person harvesting crop. Since “年” meant year and the harvesting cycle for most crops was a year, ancient Chinese named each cycle a “年” . When the most important Chinese holiday, the Spring Festival, comes, Chinese people like to say “过大年” (celebrating the new year). That is the time when families have their reunions. They would paste spring festival couplets and eat the family reunion dinner together. When the bell rings for the new year, all the families would light off firecrackers continuously to scare off evil spirits and to create a jubilant atmosphere. During the Spring Festival, in the streets or downtowns in some areas would have the lion dance, the dragon lanterns, flower markets, and temple faire, where are crowded with tourists bustling with noise and excitement.',
+							'readImages':['images/readA01.png','images/arrownext.png','images/readA02.png','images/arrownext.png','images/readA03.png'],
+							},
+						words:[
+						       {
+						        'vocabulary':['今','*'],
+						        'english':'This year',
+						        'audioSrc':'resource/audio/year01.mp3'
+						       },
+						       {
+						        'vocabulary':['童','*'],
+						        'english':'Childhood Age',
+						        'audioSrc':'resource/audio/year02.mp3'
+						       },
+						       {
+						        'vocabulary':['新','*'],
+						        'english':'New year',
+						        'audioSrc':'resource/audio/year03.mp3'
+						       },
+						       {
+						        'vocabulary':['*','龄'],
+						        'english':'Celebrate',
+						        'audioSrc':'resource/audio/year04.mp3'
+						       },
+						       {
+						        'vocabulary':['青','*'],
+						        'english':'Youth',
+						        'audioSrc':'resource/audio/year05.mp3'
+						       },
+						       {
+						        'vocabulary':['过','*'],
+						        'english':'the New Year',
+						        'audioSrc':'resource/audio/year06.mp3'
+						       }
+					   ],
+						writeObj:{
+						  width: 200,
+						  height: 200,
+						  padding: 5,
+						  strokeColor: '#9e2529',// 字体颜色
+						  radicalColor: '#9e2529', // #9e2529 偏旁部首颜色
+						  delayBetweenLoops: 1000//动画间隔时间
+						}
+					},
+					methods: {
+						//初始化
+						initFun:function() {
+							// this.loadingFun();
+							$("div.pageSingle").css("min-height",$(document).height());
+							$("div#bg").css("min-height",$(document).height());
+							$("div#bg>div.bg1").css("min-height",$(document).height());
+							// 汉字转拼音输出
+							this.newPyCharacter=pinyinUtil.getPinyin(this.newCharacter[0], ' ', true);
+							console.log(pinyinUtil.getPinyin(this.newCharacter[0], ' ', true));
+							console.log("可视区高度"+$(document).height());
+						},
+						// 加载中。。。
+						loadingFun:function() {
+							$('body').loading({
+								loadingWidth:120,
+								title:'',
+								name:'loadingName',
+								discription:'',
+								direction:'column',
+								type:'origin',
+								// originBg:'#71EA71',
+								originDivWidth:40,
+								originDivHeight:40,
+								originWidth:6,
+								originHeight:6,
+								smallLoading:false,
+								loadingMaskBg:'rgba(0,0,0,0.2)'
+							});
+					
+							
+						},
+						// 词汇点击播放读音
+						playFun:function(event){
+							event.target.lastChild.play();													
+						},
+						// 词卡点击 填词并播放读音
+						fillClickFun:function(event){
+							// @click.stop
+							event.target.lastChild.play();
+							event.target.parentNode.parentNode.className='hide';
+							var _number=event.target.getAttribute("data-number");
+							$('div.everdayVocabulary.numbner'+_number).find("div.singleBlank").text(this.newCharacter[0]).css("color","#9e2529");
+							console.log(event.target.innerText);
+						},
+						// 点击logo回首页
+						backHome:function (event){
+							$("div.pageSingle").each(function(){
+								$("div[data-name].pageSingle").css("display","none");
+								$("div[data-name=0]").css("display","block");
+								$("div.button-prev").css("display","none");
+								$("div.button-next").css("display","block");
+							})
+						},
+						// 上一页
+						prevFun:function (event){
+							$("div.pageSingle").each(function(){
+								if($(this).css("display")=="block"){
+									console.log(Number($(this).attr("data-name")));
+									if($(this).attr("data-name")=='1'){
+										$("div.button-prev").css("display","none");
+									}
+									if($(this).attr("data-name")>0){
+										$("div[data-name].pageSingle").css("display","none");
+										$("div[data-name="+(Number($(this).attr("data-name"))-1)+"]").css("display","block");
+										$("div.button-next").css("display","block");
+										return false;
+									}	
+								}
+								
+							})
+						},
+						// 下一页
+						nextFun:function (event){
+							$("div.pageSingle").each(function(){
+								if($(this).css("display")=="block"){
+									console.log(Number($(this).attr("data-name"))+1);
+									if($(this).attr("data-name")==$("div.pageSingle[data-name]").length-2){
+										$("div.button-next").css("display","none");
+									}
+									if($(this).attr("data-name")<$("div.pageSingle[data-name]").length-1){
+										$("div[data-name].pageSingle").css("display","none");
+										$("div[data-name="+(Number($(this).attr("data-name"))+1)+"]").css("display","block");
+										$("div.button-prev").css("display","block");
+										return false;
+									}								 
+								}
+							})
+							
+						},
+						// 日期
+						dateFun: function(){
+							
+							$( "#dateInput" ).datepicker({
+								dateFormat:"yy/mm/dd",
+								showMonthAfterYear:true,//设置在月份在年份后边
+								yearSuffix: '年',//年份的后缀
+								firstDay:1,//设置一周从星期一开始
+								closeText: '关闭',//给关闭按钮设置文字
+								// currentText: '今天',//给今天按钮设置文字
+								// showButtonPanel:true,//是否在日期面板中显示按钮
+								changeMonth:true,//设置月份的下拉列表
+								changeYear:true,//设置年的下拉列表
+								// yearRange:"2000:2050",//设置下拉列表中年份的范围
+								
+								prevText: "上一天",//上一天文字
+								nextText: "下一天",//下一天文字
+								numberOfMonths: [ 1, 1 ],//一行一个
+								selectOtherMonths: true,//
+								// minDate:'-1m -7d',//从今天起 一个月零七天 maxDate
+								monthNames: [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
+								// 月份名称
+								// 值：包含12个月份的数组（主要用于本土化）
+								// 默认： [ "Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December" ]
+								dayNamesMin: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
+								// 列标题
+								// 值：包含周日到周六的数组（主要用于本土化）
+								// 默认：[ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ]
+								beforeShow: function(){
+									// 日期面板显示之前的处理函数（处理业务中面板显示与否相关的逻辑）
+									// 默认：null
+									// 功能：获取输入字段和当前datepicker实例并返回选项对象以更新datepicker的函数。它在显示datepicker之前调用。
+									alert("123");
+									console.log("获取输入字段和当前datepicker实例并返回选项对象以更新datepicker的函数。它在显示datepicker之前调用。");
+								},
+								onSelect: function (dateText, inst) {
+									console.log(dateText);
+									console.log(inst);
+																		
+								}
+								// beforeShowDay: function(date) {
+							
+								// }
+								
+							});
+							console.log($( "#dateInput" ).datepicker( 'getDate' ));
+							
+						},
+						allReqfun: function(){
+							
+							
+						},
+						getReqFun: function(url){
+							axios.get('/user',{
+							  params:{
+							    ID:12345
+							  }
+							})
+							.then(function(response){
+							  console.log(response);
+							})
+							.catch(function(err){
+							  console.log(err);
+							});
+						},
+						postReqFun: function(){
+							axios.post('/user',{
+							  firstName:'Fred',
+							  lastName:'Flintstone'
+							})
+							.then(function(res){
+							  console.log(res);
+							})
+							.catch(function(err){
+							  console.log(err);
+							});
+						},						
+						// 选择题
+						selectFun: function (event){
+							var dataAnswer=event.target.getAttribute('data-answer');
+							var dataValue=event.target.getAttribute('value');
+							if(dataAnswer==dataValue){
+								$('#correct')[0].play();
+								$('img#error').hide();
+								$('img#correct').show();
+								$("div.listBox label").removeClass();
+								event.target.parentNode.className='right';
+							}else{
+								$('#error')[0].play();
+								$('img#correct').hide();
+								$('img#error').show();
+								$("div.listBox label").removeClass();
+								event.target.parentNode.className='wrong';
+							}
+							
+						},
+						// 测试
+						writerTestQuiz: function () {
+						  writerTest.quiz();
+						},
+						newCharacterQuiz: function (event) {
+						  // 新汉字
+						  console.log(this.name);
+						  console.log(event.target.innerText);
+						  writer.setCharacter(event.target.innerText);
+						  writerTest.setCharacter(event.target.innerText);
+						  //循环动画
+						  writer.loopCharacterAnimation();
+						  // 测试
+						  writerTest.quiz();
+						},
+						characterInit: async function (){
+							// var ren = require('hanzi-writer-data/人');
+							// 日历
+							initwriter = HanziWriter.create('character-init-div',this.newCharacter[0], this.writeObj);
+							// 选择
+							initselectwriter = HanziWriter.create('character-initSelect-div',this.newCharacter[0], this.writeObj);
+							//循环
+							writer = HanziWriter.create('character-target-div',this.newCharacter[0], this.writeObj);
+							//测试
+							writerTest = HanziWriter.create('character-target-div-test',this.newCharacter[0], this.writeObj);
+							
+							//循环动画
+							writer.loopCharacterAnimation();
+							// 测试
+							writerTest.quiz({
+								// onMistake: function(strokeData) {
+								//   console.log('strokeNum 当前笔画数:' + strokeData.strokeNum);
+								//   console.log("mistakesOnStroke 到目前为止用户绘制此笔划所犯的错误数:" + strokeData.mistakesOnStroke);
+								//   console.log("totalMistakes 到目前为止在测验期间犯的总错误:" + strokeData.totalMistakes);
+								//   console.log("strokesRemaining 测验完成前剩余的笔画数:" + strokeData.strokesRemaining);
+								//   console.log("drawnPath 对象包含用户绘制的 pathString ，用于评分的分数:" + strokeData.drawnPath);
+								//   console.log(strokeData.drawnPath);
+								// },
+								// onCorrectStroke: function(strokeData) {
+								//   console.log('strokeNum 当前笔画数:' + strokeData.strokeNum);
+								//   console.log("mistakesOnStroke 到目前为止用户绘制此笔划所犯的错误数:" + strokeData.mistakesOnStroke);
+								//   console.log("totalMistakes 到目前为止在测验期间犯的总错误:" + strokeData.totalMistakes);
+								//   console.log("strokesRemaining 测验完成前剩余的笔画数:" + strokeData.strokesRemaining);
+								//   console.log("drawnPath 对象包含用户绘制的 pathString ，用于评分的分数:" + strokeData.drawnPath);
+								//   console.log(strokeData.drawnPath);
+								// },
+								// onComplete: function(summaryData) {
+								//   console.log('You did it! You finished drawing ' + summaryData.character);
+								//   console.log('You made ' + summaryData.totalMistakes + ' total mistakes on this quiz');
+								// }
+							});
+							
+						},
+						
+						
+					},
+					beforeCreate: function () {
+						///console.group('beforeCreate 创建前状态===============》');
+					},
+					created: function () {
+						//console.group('created 创建完毕状态===============》');
+					},
+					beforeMount: function () {
+						//console.group('beforeMount 挂载前状态===============》');
+					},
+					mounted: function (){						
+						//console.group('mounted 挂载结束状态===============》');
+					},					
+					beforeUpdate: function () {
+						// this.characterInit();
+						//console.group('beforeUpdate 更新前状态===============》');
+					},
+					updated: function () {
+						//console.group('updated 更新完成状态===============》');
+					},
+					beforeDestroy: function () {
+						//console.group('beforeDestroy 销毁前状态===============》');
+					},
+					destroyed: function () {
+						//console.group('destroyed 销毁完成状态===============》');
+					}	
+				});
+				oneWordMain.initFun();//初始化
+				oneWordMain.loadingFun();//加载中。。。。
+				oneWordMain.dateFun();//日期 				
+				oneWordMain.characterInit().then(val => {
+					//汉字加载完成后 加载线上移除
+					setInterval(function(){
+						removeLoading('loadingName');
+						// console.log(val);
+						},3000);
+					// console.log("remove");
+					
+			　　});//汉字初始化
+		
+					
+				
+			});
+		</script>
+	</body>
+</html>

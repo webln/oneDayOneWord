@@ -1,0 +1,701 @@
+@media screen and (min-width: 1200px) {
+	div#dateBox{
+		font-size: 1.25rem;
+	}
+	.ui-datepicker td span, .ui-datepicker td a{
+		padding: 1rem!important;
+	}
+	div#bg>div.bg1{
+		
+	}
+	div#bg>div.bg2{
+		height: 10.5rem;
+	}
+	div#bg>div.bg3{
+		right: 2rem;
+		top: 1.25rem;
+		height: 25.25rem;
+	}
+	div#bg>div.bg4{
+		left: 4rem;
+		height: 26.25rem;
+	}
+	div#bg>div.bg5{
+		height: 20px;
+		width: calc(100% - 16.8rem) !important;
+		margin: 5rem 8rem;
+	}
+	div#bg>div.bg6{
+		height: 20px;
+		width: calc(100% - 16.8rem) !important;
+		margin: 4.5rem 8rem;
+	}
+	div#bg>div.bg7{
+		left: 8rem;
+		margin: 5rem 0px;
+		height: calc(100% - 10rem);
+	}
+	div#bg>div.bg8{
+		right: 8rem;
+		margin: 5rem 0px;		
+		height: calc(100% - 10rem);
+	}	
+	
+	.txt3Size{
+		font-size: 1.4rem;
+	}
+	.pageTxtSize{
+		font-size: 2.2rem;
+	}
+	div.imgItem img{
+		width: 80%;
+	}
+	h2.pageTitle{
+		padding: 0.8rem 0px 1rem 0rem;
+		font-size: 2rem !important;
+	}
+	div.button-next,div.button-prev{
+		width: 6.25rem;
+		height: 6.25rem;
+		line-height: 6.25rem;
+	}
+	/* div#bg>div.bg5,div#bg>div.bg6,div#bg>div.bg7,div#bg>div.bg8{
+		display: none;
+	} */
+	.pageTitle{
+		font-size: 1.4rem;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+	div#dateBox{
+		font-size: 1.2rem;
+	}
+	.ui-datepicker td span, .ui-datepicker td a{
+		padding: 1rem!important;
+	}
+	div#bg>div.bg1{
+		
+	}
+	div#bg>div.bg2{
+		left: -2rem!important;
+		height: 12.5rem;
+	}
+	div#bg>div.bg3{
+		right: 0rem;
+		top: 1.25rem;
+		height: 25.25rem;
+	}
+	div#bg>div.bg4{
+		left: 1rem;
+		height: 26.25rem;
+	}
+	div#bg>div.bg5{
+		height: 20px;
+		width: calc(100% - 16.8rem) !important;
+		margin: 5rem 8rem;
+	}
+	div#bg>div.bg6{
+		height: 20px;
+		width: calc(100% - 16.8rem) !important;
+		margin: 5rem 8rem;
+	}
+	div#bg>div.bg7{
+		left: 8rem;
+		margin: 5rem 0px;
+		height: calc(100% - 8rem);
+	}
+	div#bg>div.bg8{
+		right: 8rem;
+		margin: 5rem 0px;
+		height: calc(100% - 8rem);
+	}
+	div.imgItem img{
+		width: 80%;
+	}
+	div.button-next,div.button-prev{
+		width: 6.25rem;
+		height: 6.25rem;
+		line-height: 6.25rem;
+	}
+	div.pageSingle>div.container>div{
+		padding-top: 11.5625rem!important;
+		padding-bottom: 11.5625rem!important;
+	}
+	div#bg>div.bg5,div#bg>div.bg6,div#bg>div.bg7,div#bg>div.bg8{
+		display: none;
+	}
+	
+	.txt3Size{
+		font-size: 1.2rem;
+	}
+	.pageTxtSize{
+		font-size: 1.8rem;
+	}
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+	div#dateBox{
+		font-size: 1.1rem;
+	}
+	.ui-datepicker td span, .ui-datepicker td a{
+		padding: 0.6rem!important;
+	}
+	div#bg>div.bg1{
+		
+	}
+	div#bg>div.bg2{
+		height: 8rem;
+		left: -2rem!important;
+	}
+	div#bg>div.bg3{
+		right: 0rem;
+		top: 0rem;
+		height: 15rem;
+	}
+	div#bg>div.bg4{
+		left: 0rem;
+		height: 18rem;
+	}
+	div#bg>div.bg5{
+		height: 20px;
+		width: calc(100% - 7rem) !important;
+		margin: 2rem 2.8rem;
+		left: 1rem;
+	}
+	div#bg>div.bg6{
+		height: 20px;
+		width: calc(100% - 7rem) !important;
+		margin: 2rem 2.8rem;
+		left: 1rem;
+	}
+	div#bg>div.bg7{
+		left: 3rem;
+		margin: 3.5rem 0px;
+		height: calc(100% - 6rem);
+	}
+	div#bg>div.bg8{
+		right: 3rem;
+		margin: 3.5rem 0px;
+		height: calc(100% - 6rem);
+	}	
+	div.imgItem img{
+		width: 100%;
+	}
+	div.button-next,div.button-prev{
+		width: 4.25rem;
+		height: 4.25rem;
+		line-height: 4.25rem;
+	}
+	div#bg>div.bg5,div#bg>div.bg6,div#bg>div.bg7,div#bg>div.bg8{
+		display: none;
+	}
+	.pageTitle{
+		font-size: 1.4rem!important;
+		text-align: center;
+	}
+	
+}
+
+@media screen and (max-width: 767px) {
+	.txt3Size{
+		line-height: 2rem !important;
+	}
+	h2.pageTitle{
+		padding-bottom: 10px;
+	}
+	div.judgeBox{
+		margin-top: 1.5rem;
+	}
+	div#dateBox{
+		font-size: 1rem;
+	}
+	.ui-datepicker td span, .ui-datepicker td a{
+		padding: 0.5rem 0.3rem!important;
+	}
+	div#bg>div.bg1{
+		
+	}
+	div#bg>div.bg2{
+		height: 8rem;
+		left: -2rem!important;
+	}
+	div#bg>div.bg3{
+		right: 0rem;
+		top: 0rem;
+		height: 15rem;
+	}
+	div#bg>div.bg4{
+		left: 0rem;
+		height: 18rem;
+	}
+	div#bg>div.bg5{
+		height: 20px;
+		width: calc(100% - 7rem) !important;
+		margin: 2rem 2.8rem;
+		left: 1rem;
+	}
+	div#bg>div.bg6{
+		height: 20px;
+		width: calc(100% - 7rem) !important;
+		margin: 2rem 2.8rem;
+		left: 1rem;
+	}
+	div#bg>div.bg7{
+		left: 3rem;
+		margin: 3.5rem 0px;
+		height: calc(100% - 6rem);
+	}
+	div#bg>div.bg8{
+		right: 3rem;
+		margin: 3.5rem 0px;		
+		height: calc(100% - 6rem);
+	}	
+	div#bg>div.bg5,div#bg>div.bg6,div#bg>div.bg7,div#bg>div.bg8{
+		display: none;
+	}
+	
+	.txt3Size{
+		font-size: 1rem;
+	}
+	.pageTxtSize{
+		font-size: 1.8rem!important;
+	}
+	div.imgItem img{
+		width: 100%;
+	}
+	div.button-next,div.button-prev{
+		width: 4.25rem;
+		height: 4.25rem;
+		line-height: 4.25rem;
+	}
+	
+	div#selectBox>p.pinyin.pageTxtSize{
+		height: 0.625rem;
+	}
+	div#characterTargetTest{
+		padding-top: 1.25rem;
+	}
+	
+	
+}
+@font-face {
+     font-family: pinyinFont;
+     src: url('../fonts/2BYTE1.TTF');
+}
+.txt3Size{
+	text-align: justify;
+	line-height: 2.6rem;
+	font-weight: normal;
+	padding-bottom: 1.25rem;
+}
+div#bg{
+	width: 100%;
+	position: fixed;
+}
+div#bg>div[class^='bg']{
+	width: 100%;
+	position: absolute;
+}
+div#bg>div.bg1{
+	top: 0rem;
+	z-index: -8;
+	background: url('../images/bg1.png') no-repeat;
+}
+div#bg>div.bg2{
+	background: url('../images/bg2.png') no-repeat;
+	top: 1rem;
+	left: 2rem;
+	background-size: contain;
+	z-index: 99999;
+}
+div#bg>div.bg3{
+	background: url('../images/bg3.png') right no-repeat;
+	background-size: contain;
+}
+div#bg>div.bg4{
+	background: url('../images/bg4.png') left bottom no-repeat;
+	bottom: 0rem;
+	background-size: contain;
+}
+div#bg>div.bg5{
+	background: url('../images/bgtop.png') 3.25rem top repeat-x;
+	z-index: -5;
+	background-size: contain;
+}
+div#bg>div.bg6{
+	background: url('../images/bgtop.png') 3.25rem bottom repeat-x;
+	bottom: 0rem;
+	z-index: -6;
+	background-size: contain;
+}
+div#bg>div.bg7{
+	background: url('../images/bgleft.png') top left repeat-y;
+	z-index: -7;
+	top: 0rem;
+	width: 20px !important;
+	background-size: contain;
+}
+div#bg>div.bg8{
+	background: url('../images/bgleft.png') top left repeat-y;
+	z-index: -7;
+	width: 20px !important;
+	background-size: contain;
+}
+
+/* div.pageTab-wrapper>div.pageSingle{
+	background: url('../images/bgnext.png') no-repeat fixed center;
+	background-size: contain;
+}
+div.pageTab-wrapper>div.pageSingle:last-child{
+	background: url('../images/bgnext.png') no-repeat fixed center;
+	background-size: contain;
+} */
+/* 页面切换 */
+div.pageSingle{
+	display: none;
+}
+div.pageSingle>div.container{
+	padding: 0rem 3rem;
+}
+div.pageSingle:nth-child(1){
+	display: block;
+}
+div.button-next,div.button-prev{
+	cursor: pointer;
+	/* width: 6.25rem;
+	height: 6.25rem; */
+	position: fixed;
+	z-index: 9999;	
+	/* background-size: contain; */
+}
+div.button-prev{
+	top: 0rem;
+	display: none;
+	background: url(../images/btnprev.gif) no-repeat;
+	background-size: contain;
+}
+div.button-next{
+	right: 0rem;
+	bottom: -0.5rem;
+	text-align: right;
+	background: url(../images/btnnext.gif) no-repeat;
+	background-size: contain;
+}
+/* 页面标题 */
+h2.pageTitle{
+	/* font-family: "agency fb"; */
+	/* font-size: 2rem !important; */
+	color: #90120c;
+	font-size: 1.65rem;
+	text-align: center;
+}
+
+div.pageSingle>div.container>div{
+	padding-top: 6.5625rem;
+	padding-bottom: 6.5625rem;
+}
+.lookCenter{
+	text-align: center;
+}
+.pinyin{
+	font-family: pinyinFont;
+}
+
+svg{
+	border: 3px solid #5e4b43;
+	background-color: #f0eeea;
+}
+div#answer>div.row>div{
+	margin: 0.625rem 0px;
+}
+div.q-single{
+/* 	flex-direction:row;
+	flex-wrap:wrap; */
+	flex-flow:row wrap;
+	justify-content:space-between;
+	align-items:center;
+	align-content:center;
+	display: flex;
+	padding: 0.625rem 0px;
+}
+div.q-inside{
+	flex-grow:3;
+}
+.q-left{
+	border-bottom: 1px solid #000;
+	text-align: center;
+	height: 68px;
+	padding: 0px 35px;
+}
+.q-center{
+	font-size: 2.25rem;
+}
+.q-right{
+	font-size: 1.125rem;
+}
+.a-top{
+	text-align: center;
+	cursor: move;
+	border-radius: 0.3125rem;
+	background-color: #9e2529;
+	padding: 0.625rem 0rem;
+	font-size: 2.25rem;
+}
+.a-bottom{
+	
+}
+div.a-single{
+	
+}
+
+.ui-datepicker-inline{
+	margin: 0px auto;
+}
+a.ui-state-active{
+	background-color: #9e2529;
+	/* border-radius: 50%; */
+}
+.ui-datepicker td span, .ui-datepicker td a{
+	text-align: center;
+}
+.ui-state-highlight{
+	border:1px solid #9e2529;
+	/* border-radius: 50%; */
+}
+.ui-datepicker-title select,.ui-datepicker-title select:focus-visible{
+	/* text-align: right; */
+	border: none;
+	list-style: none;
+	outline:none ;
+	cursor: pointer;
+}
+.ui-datepicker-prev::before,.ui-datepicker-next::before{
+	color: #9e2529;
+	font-weight: 700;
+	cursor: pointer;
+}
+.ui-datepicker-prev::before{
+	content: '<';
+}
+.ui-datepicker-next::before{
+	content: '>';	
+}
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{
+	line-height: 1.8em;
+	text-align: center;
+}
+/* 选择题 */
+div.listBox div#selectBox{
+	display: flex;
+	flex-wrap: wrap;
+	/* flex-flow:row wrap;
+	justify-content:space-between; */
+	align-items:center;
+	/* align-content:center; */
+}
+div.judgeBox{
+	text-align: center;
+	width: 100%;
+	height: 50px;
+	margin-bottom: 1.5625rem;
+}
+div.judgeBox img{
+	height: 100%;
+	/* width: 3.125rem; */
+	margin: 0px auto;
+	display: none;
+}
+div.listBox div#selectBox>div{
+	width: 100%;
+	text-align: center;
+}
+div.listBox label{
+	width: 50%;
+	border: 1px solid #8e7970;
+	cursor: pointer;
+	padding: 0.3125rem 0.625rem;
+	border-radius: 10px;
+	background-color: #e5dfd2;
+	margin: 0.6rem 0px;
+}
+div.listBox label span{
+	display: inline-block;
+	background:#fff;
+	padding: 2px 6px;
+	border-radius: 6px;
+	margin: 3px 0px;
+}
+div.listBox div.selectItem:nth-child(2) span::before {
+	content: 'A';
+	font-weight: bold;
+}
+div.listBox div.selectItem:nth-child(3) span::before {
+	content: 'B';
+	font-weight: bold;
+}
+div.listBox div.selectItem:nth-child(4) span::before {
+	content: 'C';
+	font-weight: bold;
+}
+div.listBox div.selectItem:nth-child(5) span::before {
+	content: 'D';
+	font-weight: bold;
+}
+div.selectItem b.selectContent{
+	display: inline-block;
+	width: calc(100% - 2rem);
+	text-align: center;
+}
+div.listBox label.right{
+	background: #89c997;
+	border-color: #5dab6f;
+}
+div.listBox label.wrong{
+	background: #ce251d;
+	border-color: #90120c;
+}
+/* 日历 */
+
+div.ui-datepicker-title select{
+	background-color: transparent;
+}
+table.ui-datepicker-calendar a{
+	color: #2aa3a1;
+}
+a.ui-state-active{
+	color: #fbddba!important;
+}
+/* 阅读 */
+div.imgReadBox{
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+}
+div.imgItem{
+	/* width: 100%; */
+	text-align: center; 
+}
+
+	/* div.imgItem:last-child div:last-child{
+		display: none;
+	} */
+svg#character-target-div {
+	background-color: #c0c3ba;
+}
+
+.reset-button{
+	width: 1.875rem;
+	cursor: pointer;
+	margin-top: 0.625rem;
+}
+
+/* 点击填空 */
+#problem{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+div.everdayVocabulary{
+	width: 50%;
+	text-align: center;
+	padding: 1rem 0rem;
+	
+	position: relative;
+	z-index: 10;
+}
+div.vocabularytxt{
+	display: inline-block;
+	font-size: 2rem;
+	line-height: 2rem;
+	padding: 0.125rem 0.25rem;
+}
+div.vocabularyEnglish{
+	font-size: 1rem;
+}
+div.vocabularyAudio{
+	position: absolute;
+	top: 0rem;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+div.singleBlank{
+	width: 3rem;
+	height: 3rem;
+	line-height: 3rem;
+	text-align: center;
+	background-color: #d3c7b1;
+}
+#solution{
+	position: relative;
+	text-align: center;
+	width: 11.3rem;
+	margin: 0px auto;
+	height: 6.25rem;
+}
+div#solution>div.everdaycharacter{
+	
+	
+	/* width: 100%; */
+	
+	margin: 0px auto;
+	position: absolute;
+	top: 0px;
+	/* border: 1px solid #6d5d54; */
+	/* width: 6.25rem;
+	height: 6.25rem; */
+}
+div.everdaycharacter>div.characterBox{
+	/* position: relative; */
+}
+div.everdaycharacter>div.characterBox>svg{
+	width: 6.25rem;
+	height: 6.25rem;
+}
+div.characterTxt{
+	position: absolute;
+	top: 15%;
+	font-size: 4.1rem;
+	width: 100%;
+	cursor: pointer;
+}
+.hide{
+	display: none;
+}
+div#hanzi>div>span{
+	display: none;
+}
+/* logo回首页 */
+div.btnHome{
+	width: 11rem;
+	height: 11rem;
+	border-radius: 50%;
+	position: fixed;
+	left: 2rem;
+	top: 1rem;
+	background-color: transparent;
+	color: transparent;
+	cursor: pointer;
+}
+
+div.ui-datepicker{
+	width: 100%;
+	/* font-size: 1.125rem; */
+}
+
+svg{
+	margin-top: 1.5625rem;
+}
+div.characterBox svg{
+	margin-top: 0px;
+}
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year{
+	width: 30%!important;
+}
+select.ui-datepicker-month{
+	margin-left: 3rem!important;
+}
